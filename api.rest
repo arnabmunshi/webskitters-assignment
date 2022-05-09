@@ -1,0 +1,64 @@
+@localhost = http://localhost:3000
+@version = v1
+@host = {{localhost}}
+
+### user registration
+POST {{host}}/{{version}}/auth/user/registration
+content-type: application/json
+
+{
+  "name": "Arnab",
+  "email": "arnab47stars@gmail.com",
+  "password": "123"
+}
+
+### user login
+POST {{host}}/{{version}}/auth/user/login
+content-type: application/json
+
+{
+  "email": "arnab47stars@gmail.com",
+  "password": "123"
+}
+
+### user details [single]
+GET {{host}}/{{version}}/users/627728c327bda707dc30a21a
+
+### update user [single]
+PUT {{host}}/{{version}}/users/627728c327bda707dc30a21a
+content-type: application/json
+
+{
+  "name": "Arnab Munshi",
+  "email": "arnab47stars@gmail.com",
+  "password": "123"
+}
+
+### create category
+POST {{host}}/{{version}}/categories
+content-type: application/json
+
+{
+  "title": "facebook"
+}
+
+### all category
+GET {{host}}/{{version}}/categories
+
+### create question
+POST {{host}}/{{version}}/questions
+content-type: application/json
+
+{
+  "title": "How to get jobs in google",
+  "categories": "google, job"
+}
+
+### all questions
+GET {{host}}/{{version}}/questions
+
+### search by category
+GET {{host}}/{{version}}/questions?category=job
+
+### list of questions for each category
+GET {{host}}/{{version}}/categories/questions
