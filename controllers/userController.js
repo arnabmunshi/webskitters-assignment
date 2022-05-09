@@ -4,9 +4,7 @@ const bcrypt = require("bcrypt");
 module.exports = {
   userDetails: async (req, res) => {
     try {
-      const user = await User.findById(
-        req.params.id
-      );
+      const user = await User.findById(req.params.id);
 
       const { password, ...other } = user._doc;
       res.status(200).json(other);
@@ -19,6 +17,10 @@ module.exports = {
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
+    }
+
+    if (req.file) {
+      req.body.profilePic = req.file.path;
     }
 
     try {
