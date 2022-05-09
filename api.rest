@@ -62,3 +62,6 @@ GET {{host}}/{{version}}/questions?category=job
 
 ### list of questions for each category
 GET {{host}}/{{version}}/categories/questions
+
+### csv upload
+POST {{host}}/{{version}}/csv
